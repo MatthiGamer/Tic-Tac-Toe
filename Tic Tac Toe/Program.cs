@@ -10,6 +10,13 @@ namespace Tic_Tac_Toe
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("|---|---|---|");
+            Console.WriteLine("| X | X | X |");
+            Console.WriteLine("|---|---|---|");
+            Console.WriteLine("| X | X | X |");
+            Console.WriteLine("|---|---|---|");
+            Console.WriteLine("| X | X | X |");
+            Console.WriteLine("|---|---|---|");
         }
     }
 }
