@@ -27,12 +27,13 @@ namespace Tic_Tac_Toe
             // Gameloop
             while (!TestGameOver())
             {
-                SetInput();
+                Console.WriteLine("______________________________\n");
                 DrawGameBoard();
-                Console.WriteLine("\nThe current places are " + availableFields.ToString() + " \n");
+                SetInput();
                 ChangePlayer();
             }
 
+            DrawGameBoard();
             Console.WriteLine("The game is over!");
             Console.ReadLine();
         }
@@ -141,7 +142,7 @@ namespace Tic_Tac_Toe
 
         private static int GetPlayerInput()
         {
-            Console.Write("Choose your field: ");
+            Console.Write("Player, choose your field: ");
             int playerInput = Int32.Parse(Console.ReadLine());
             return playerInput;
         }
@@ -154,12 +155,12 @@ namespace Tic_Tac_Toe
             {
                 computerField = computerFieldRandomizer.Next(0, 9);
             }
+            Console.WriteLine("Computer, choose your field: " + computerField);
             WriteInput(computerField);
         }
 
         private static void WriteInput(int field)
         {
-            Console.WriteLine("\nThe currently selected field is " + field + " \n");
             availableFields[field] = false;
 
             if (field == 0 || field == 1 || field == 2)
@@ -207,8 +208,6 @@ namespace Tic_Tac_Toe
 
         private static void DrawGameBoard()
         {
-            Console.WriteLine("");
-            Console.WriteLine("Player: " + GetPlayerName());
             Console.WriteLine("\n Gameboard:");
             Console.WriteLine("-|---|---|---|-");
             Console.WriteLine("-| " + fields[0, 0] + " | " + fields[0, 1] + " | " + fields[0, 2] + " |-");
@@ -217,7 +216,7 @@ namespace Tic_Tac_Toe
             Console.WriteLine("-|---|---|---|-");
             Console.WriteLine("-| " + fields[2, 0] + " | " + fields[2, 1] + " | " + fields[2, 2] + " |-");
             Console.WriteLine("-|---|---|---|-");
-            Console.WriteLine("\n");
+            Console.WriteLine("");
         }
 
         private static string GetPlayerName()
