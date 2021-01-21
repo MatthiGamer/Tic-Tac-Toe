@@ -9,19 +9,20 @@ namespace Tic_Tac_Toe
     class Program
     {
         private static string[,] fields = new string[3,3];
-        private static int player = 0;
+        private static bool[] fieldAvailability = new bool[9];
+        private static bool player = true;
 
         static void Main(string[] args)
         {
             ResetFields();
 
-            Console.WriteLine("|---|---|---|");
-            Console.WriteLine("| 1 | 2 | 3 |");
-            Console.WriteLine("|---|---|---|");
-            Console.WriteLine("| 4 | 5 | 6 |");
-            Console.WriteLine("|---|---|---|");
-            Console.WriteLine("| 7 | 8 | 9 |");
-            Console.WriteLine("|---|---|---|");
+            Console.WriteLine("-|---|---|---|-");
+            Console.WriteLine("-| 0 | 1 | 2 |-");
+            Console.WriteLine("-|---|---|---|-");
+            Console.WriteLine("-| 3 | 4 | 5 |-");
+            Console.WriteLine("-|---|---|---|-");
+            Console.WriteLine("-| 6 | 7 | 8 |-");
+            Console.WriteLine("-|---|---|---|-");
 
             Console.ReadLine();
         }
@@ -33,13 +34,24 @@ namespace Tic_Tac_Toe
                 for (int j = 0; j < 3; j++)
                 {
                     fields[i,j] = "";
+                    fieldAvailability[(j + 1) + (i * 3) - 1] = false;
                 }
             }
         }
 
         private static string WriteInField()
         {
-            return player == 0 ? "X" : "O";
+            return player ? "X" : "O";
+        }
+
+        private static void ChangePlayer()
+        {
+            player = !player;
+        }
+
+        private static bool IsAvailable(int field)
+        {
+            return fieldAvailability[field];
         }
     }
 }
